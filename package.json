@@ -1,0 +1,34 @@
+{
+  "name": "fcc-bar-chart",
+  "version": "1.0.0",
+  "description": "United States GDP bar chart project using D3 library as part of freecodecamp course",
+  "main": "index.js",
+  "scripts": {
+    "babel": "babel js/main.js --out-file js/main.babel.js",
+    "minifyjs": "minify js/main.babel.js > dist/js/main.js",
+    "minifycss": "minify css/style.css > dist/css/style.css",
+    "minifyhtml": "minify index.html > dist/index.html",
+    "build": "npm run babel && npm run minifyjs && npm run minifycss && npm run minifyhtml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minggas/fcc-bar-chart.git"
+  },
+  "keywords": [
+    "bar-chart",
+    "freecodecamp",
+    "GPD",
+    "D3"
+  ],
+  "author": "Minggas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/minggas/fcc-bar-chart/issues"
+  },
+  "homepage": "https://github.com/minggas/fcc-bar-chart#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "minify": "^3.0.5"
+  }
+}
