@@ -3,15 +3,15 @@
 var container = document.querySelector(".container");
 console.dir(container);
 
-var w = container.clientWidth - 130,
-    h = container.clientHeight - 155;
+var w = container.clientWidth - 100,
+    h = container.clientHeight - 110;
 
 //Mouse over element
 var overlay = d3.select(".container").append("div").attr("class", "overlay").style("opacity", 0);
 //Tooltip with data information
 var tooltip = d3.select(".container").append("div").attr("id", "tooltip").style("opacity", 0);
 //Chart container
-var svgContainer = d3.select(".container").append("svg").attr("class", "chart").attr("width", w + 100).attr("height", h + 90);
+var svgContainer = d3.select(".container").append("svg").attr("class", "chart").attr("width", "100%").attr("height", "100%");
 
 //Fetch the data
 d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json").then(function (data) {
@@ -34,8 +34,8 @@ d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
     return h / 5 - h;
   }).attr("y", 80).text(yLabel);
   //X Label informations
-  var xText = svgContainer.append("text").attr("class", "x-label").attr("x", 0).attr("y", h + 60).text(data.description.split("\n")[2].split("-")[0]);
-  svgContainer.append("text").attr("class", "x-label").attr("x", w).attr("y", h + 80).text(data.description.split("\n")[2].split("-")[1]);
+  var xText = svgContainer.append("text").attr("class", "x-label").attr("x", w).attr("y", h + 60).text(data.description.split("\n")[2].split("-")[0]);
+  svgContainer.append("a").attr("href", data.description.split("\n")[2].split("-")[1].replace("(", "").replace(")", "")).attr("target", "_blank").attr("class", "link").append("text").attr("class", "x-label").attr("x", w).attr("y", h + 80).text(data.description.split("\n")[2].split("-")[1]);
   //Scale the chart with the time data
   var xScale = d3.scaleTime().domain([minDate, maxDate]).range([0, w]);
 
@@ -68,7 +68,7 @@ d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
   }).style("fill", "hsla(105, 30%, 50%, 0.5)").attr("transform", "translate(60, 0)")
   //Make the tooltip appear and highligth the bar with the mouse over
   .on("mouseover", function (d, i) {
-    overlay.transition().duration(0).style("background-color", "hsla(105, 30%, 50%, 0.9)").style("height", d + "px").style("width", barWidth + "px").style("opacity", 0.9).style("left", i * barWidth + "px").style("top", h - d + "px").style("transform", "translateX(60px)");
+    overlay.transition().duration(0).style("background-color", "hsla(105, 30%, 50%, 0.9)").style("height", d + "px").style("width", barWidth + "px").style("opacity", 0.9).style("left", i * barWidth + 15 + "px").style("top", h - d + 13 + "px").style("transform", "translateX(60px)");
     tooltip.transition().duration(200).style("opacity", 0.9);
     tooltip.html(new Date(dates[i]).toLocaleDateString("en", {
       year: "numeric",
