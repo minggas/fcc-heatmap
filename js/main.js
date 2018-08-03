@@ -1,8 +1,8 @@
 const container = document.querySelector(".container");
 console.dir(container);
 
-let w = container.clientWidth - 130,
-  h = container.clientHeight - 155;
+let w = container.clientWidth - 100,
+  h = container.clientHeight - 110;
 
 //Mouse over element
 const overlay = d3
@@ -21,8 +21,8 @@ const svgContainer = d3
   .select(".container")
   .append("svg")
   .attr("class", "chart")
-  .attr("width", w + 100)
-  .attr("height", h + 90);
+  .attr("width", "100%")
+  .attr("height", "100%");
 
 //Fetch the data
 d3.json(
@@ -53,10 +53,21 @@ d3.json(
     const xText = svgContainer
       .append("text")
       .attr("class", "x-label")
-      .attr("x", 0)
+      .attr("x", w)
       .attr("y", h + 60)
       .text(data.description.split("\n")[2].split("-")[0]);
     svgContainer
+      .append("a")
+      .attr(
+        "href",
+        data.description
+          .split("\n")[2]
+          .split("-")[1]
+          .replace("(", "")
+          .replace(")", "")
+      )
+      .attr("target", "_blank")
+      .attr("class", "link")
       .append("text")
       .attr("class", "x-label")
       .attr("x", w)
@@ -121,8 +132,8 @@ d3.json(
           .style("height", `${d}px`)
           .style("width", `${barWidth}px`)
           .style("opacity", 0.9)
-          .style("left", `${i * barWidth}px`)
-          .style("top", `${h - d}px`)
+          .style("left", `${i * barWidth + 15}px`)
+          .style("top", `${h - d + 13}px`)
           .style("transform", "translateX(60px)");
         tooltip
           .transition()

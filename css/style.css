@@ -1,5 +1,11 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ccc;
 }
 
 main {
@@ -10,12 +16,19 @@ main {
 
 #title {
   text-align: center;
+  margin: 1.2rem 0;
 }
 
 .container {
-  width: 100%;
-  height: calc(100% - 64px);
+  width: 98%;
+  height: 80%;
   position: relative;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(30, 30, 30, 0.4);
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1rem 0.2rem;
 }
 
 .overlay,
@@ -38,7 +51,11 @@ main {
 }
 
 .x-label {
-  text-align: right;
+  text-anchor: end;
+}
+
+.link:hover {
+  fill: blue;
 }
 
 #tooltip:after {
