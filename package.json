@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "babel": "babel js/main.js --out-file js/main.babel.js",
-    "minifyjs": "minify js/main.babel.js js/d3.v5.min.js > dist/js/main.js",
+    "minifyjs": "minify js/main.babel.js > dist/js/main.js",
     "minifycss": "minify css/style.css > dist/css/style.css",
     "minifyhtml": "minify index.html > dist/index.html",
     "build": "npm run babel && npm run minifyjs && npm run minifycss && npm run minifyhtml",

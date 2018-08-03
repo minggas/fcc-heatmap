@@ -73,7 +73,7 @@ d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
     tooltip.html(new Date(dates[i]).toLocaleDateString("en", {
       year: "numeric",
       month: "long"
-    }) + "<br>" + "$" + values[i].toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, "$1,") + " Billion").attr("data-date", dates[i]).style("left", i * barWidth - 40 + "px").style("top", h - d - 55 + "px").style("transform", "translateX(60px)");
+    }) + "<br>" + "$" + values[i].toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, "$1,") + " Billion").attr("data-date", dates[i]).style("left", i * barWidth - 40 + "px").style("top", h - d - 45 + "px").style("transform", "translateX(60px)");
   }).on("mouseout", function (d) {
     overlay.transition().duration(200).style("opacity", 0);
     tooltip.transition().duration(200).style("opacity", 0);

@@ -62,7 +62,7 @@ main {
   content: '';
   position: absolute;
   top: 40px;
-  right: 67%;
+  right: 55%;
   width: 10px;
   height: 10px;
   transform: rotate3d(0, 0, 1, 45deg);

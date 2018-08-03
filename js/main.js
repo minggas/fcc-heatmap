@@ -152,7 +152,7 @@ d3.json(
           )
           .attr("data-date", dates[i])
           .style("left", `${i * barWidth - 40}px`)
-          .style("top", `${h - d - 55}px`)
+          .style("top", `${h - d - 45}px`)
           .style("transform", "translateX(60px)");
       })
       .on("mouseout", function(d) {
