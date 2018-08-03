@@ -8,7 +8,9 @@
     "minifyjs": "minify js/main.babel.js > dist/js/main.js",
     "minifycss": "minify css/style.css > dist/css/style.css",
     "minifyhtml": "minify index.html > dist/index.html",
-    "build": "npm run babel && npm run minifyjs && npm run minifycss && npm run minifyhtml"
+    "build": "npm run babel && npm run minifyjs && npm run minifycss && npm run minifyhtml",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -25,10 +27,11 @@
   "bugs": {
     "url": "https://github.com/minggas/fcc-bar-chart/issues"
   },
-  "homepage": "https://github.com/minggas/fcc-bar-chart#readme",
+  "homepage": "https://minggas.github.io/fcc-bar-chart",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "gh-pages": "^1.2.0",
     "minify": "^3.0.5"
   }
 }
