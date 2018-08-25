@@ -76,13 +76,12 @@ d3.json(end)
       .append("g")
       .attr("class", "x axis")
       .attr("id", "x-axis")
-      .attr("transform", "translate(0," + h + ")")
-      .call(xAxis)
+    svgContainer
       .append("text")
-      .text("Year")
+      .text("Years")
       .attr("class", "x-axis-label")
       .attr("x", w / 2)
-      .attr("y", 10)
+      .attr("y", h + margin.bottom / 2)
       .style("text-anchor", "end");
 
     //Put the Y axis on the chart
@@ -92,6 +91,14 @@ d3.json(end)
       .attr("id", "y-axis")
       .call(yAxis);
 
+    svgContainer
+      .append("text")
+      .text("Months")
+      .attr("class", "y-axis-label")
+      .attr("x", (h / 2) * -1)
+      .attr("y", (0 + margin.left - 20) * -1)
+      .attr("transform", "rotate(-90)")
+      .style("text-anchor", "end");
     //Put the chart on the DOM
     svgContainer
       .append("g")
