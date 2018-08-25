@@ -19,19 +19,6 @@ main {
   margin: 1.2rem 0;
 }
 
-.container {
-  width: 98%;
-  height: 80%;
-  position: relative;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 8px rgba(30, 30, 30, 0.4);
-  display: flex;
-  align-items: center;
-  padding: 0.8rem 1rem 0.2rem;
-}
-
-.overlay,
 #tooltip {
   position: absolute;
   pointer-events: none;
@@ -44,27 +31,7 @@ main {
   color: #eee;
 }
 
-.y-label {
-  letter-spacing: 0.2rem;
-  font-size: 3vh;
-  size: 10%;
-}
-
-.x-label {
-  text-anchor: end;
-}
-
-.link:hover {
-  fill: blue;
-}
-
-#tooltip:after {
-  content: '';
-  position: absolute;
-  top: 40px;
-  right: 55%;
-  width: 10px;
-  height: 10px;
-  transform: rotate3d(0, 0, 1, 45deg);
-  background-color: #333;
+.chart .cell:hover {
+  stroke: #333;
+  stroke-width: 2;
 }

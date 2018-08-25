@@ -1,33 +1,31 @@
 {
-  "name": "fcc-bar-chart",
+  "name": "fcc-heatmap",
   "version": "1.0.0",
-  "description": "United States GDP bar chart project using D3 library as part of freecodecamp course",
-  "main": "index.js",
+  "description": "Heatmap project using D3 library as part of freecodecamp course",
+  "main": "main.js",
   "scripts": {
-    "babel": "babel js/main.js --out-file js/main.babel.js",
+    "preminifyjs": "babel js/main.js --out-file js/main.babel.js",
     "minifyjs": "minify js/main.babel.js > dist/js/main.js",
     "minifycss": "minify css/style.css > dist/css/style.css",
-    "minifyhtml": "minify index.html > dist/index.html",
-    "build": "npm run babel && npm run minifyjs && npm run minifycss && npm run minifyhtml",
+    "build": "npm run minifyjs && npm run minifycss",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/minggas/fcc-bar-chart.git"
+    "url": "git+https://github.com/minggas/fcc-heatmap.git"
   },
   "keywords": [
-    "bar-chart",
+    "heatmap",
     "freecodecamp",
-    "GPD",
     "D3"
   ],
   "author": "Minggas",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/minggas/fcc-bar-chart/issues"
+    "url": "https://github.com/minggas/fcc-heatmap/issues"
   },
-  "homepage": "https://minggas.github.io/fcc-bar-chart",
+  "homepage": "https://minggas.github.io/fcc-heatmap",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
