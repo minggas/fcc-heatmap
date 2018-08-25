@@ -7,6 +7,8 @@
     "preminifyjs": "babel js/main.js --out-file js/main.babel.js",
     "minifyjs": "minify js/main.babel.js > dist/js/main.js",
     "minifycss": "minify css/style.css > dist/css/style.css",
+    "clean": "cd dist && rm -r js && rm -r css && mkdir css && mkdir js",
+    "prebuild": "npm run clean",
     "build": "npm run minifyjs && npm run minifycss",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
