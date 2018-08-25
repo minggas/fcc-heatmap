@@ -1,1 +1,1 @@
-# United States GPD bar chart
+# Heatmap chart
