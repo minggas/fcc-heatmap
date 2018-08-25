@@ -7,7 +7,7 @@ const margin = {
   bottom: 80,
   left: 90
 };
-let w = 1520 - margin.left - margin.right,
+let w = 2020 - margin.left - margin.right,
   h = 630 - margin.top - margin.bottom;
 
 function monthParse(month) {
