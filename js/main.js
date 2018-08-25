@@ -141,17 +141,7 @@ d3.json(end)
 
     var legendX = d3
       .scaleQuantile()
-      .domain(
-        ((min, max, count) => {
-          let array = [];
-          let step = (max - min) / count;
-          let base = min;
-          for (let i = 1; i < count; i++) {
-            array.push(base + i * step);
-          }
-          return array;
-        })(minTemp, maxTemp, 11)
-      )
+      .domain(calcDomain(minTemp, maxTemp, 11))
       .range([0, 30, 60, 90, 120, 150, 180, 210, 240, 270]);
 
     var legendXAxis = d3
