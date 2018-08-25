@@ -16,6 +16,16 @@ function monthParse(month) {
   return d3.timeFormat("%B")(date);
 }
 
+function calcDomain(min, max, count) {
+  let array = [];
+  let step = (max - min) / count;
+  let base = min;
+  for (let i = 1; i < count; i++) {
+    array.push(base + i * step);
+  }
+  return array;
+}
+
 //Tooltip
 let tooltip = d3
   .select("body")
@@ -43,24 +53,14 @@ d3.json(end)
     //Color function
     const legendColor = d3
       .scaleThreshold()
-      .domain(
-        ((min, max, count) => {
-          let array = [];
-          let step = (max - min) / count;
-          let base = min;
-          for (let i = 1; i < count; i++) {
-            array.push(base + i * step);
-          }
-          return array;
-        })(minTemp, maxTemp, 12)
-      )
+      .domain(calcDomain(minTemp, maxTemp, 12))
       .range(d3.schemeRdYlBu[11].reverse());
 
     //Scale the chart with the data
     let xScale = d3
       .scaleLinear()
       .domain([d3.min(heatData, d => d.year), d3.max(heatData, d => d.year)])
-      .range([0, w]);
+      .rangeRound([0, w]);
 
     let yScale = d3
       .scaleBand()
@@ -76,6 +76,9 @@ d3.json(end)
       .append("g")
       .attr("class", "x axis")
       .attr("id", "x-axis")
+      .attr("transform", `translate(5,${h})`)
+      .call(xAxis);
+
     svgContainer
       .append("text")
       .text("Years")
@@ -99,6 +102,7 @@ d3.json(end)
       .attr("y", (0 + margin.left - 20) * -1)
       .attr("transform", "rotate(-90)")
       .style("text-anchor", "end");
+
     //Put the chart on the DOM
     svgContainer
       .append("g")
@@ -151,15 +155,12 @@ d3.json(end)
       .domain(calcDomain(minTemp, maxTemp, 11))
       .range([0, 30, 60, 90, 120, 150, 180, 210, 240, 270]);
 
-    var legendXAxis = d3
-      .axisBottom(legendX)
-      .ticks(10)
-      .tickFormat(d3.format(".1f"));
+    var legendXAxis = d3.axisBottom(legendX).tickFormat(d3.format(".1f"));
 
     let legend = svgContainer
       .append("g")
       .attr("id", "legend")
-      .attr("transform", "translate(" + 5 + "," + 500 + ")");
+      .attr("transform", `translate(0,${h + margin.bottom / 3})`);
 
     legend
       .selectAll("rect")
@@ -169,14 +170,13 @@ d3.json(end)
       .attr("x", (d, i) => 0 + i * 30)
       .attr("width", 30)
       .attr("height", 30)
-      .style("fill", (d, i) => d3.schemeRdYlBu[11][i])
-      .style("stroke", "black");
+      .style("fill", (d, i) => d3.schemeRdYlBu[11][i]);
 
     legend
       .append("g")
       .attr("class", "y axis")
       .attr("id", "y-axis")
-      .attr("padding", 30)
+      .attr("transform", `translate(${30},${30})`)
       .call(legendXAxis);
   })
   .catch(err => {
